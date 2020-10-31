@@ -1,17 +1,52 @@
 import React from 'react'
-import Head from 'next/head'
+import NextAuth from 'next-auth/client'
+import { GetServerSideProps } from 'next'
 
-import { Container } from '~/styles/pages/Home'
+interface IUser {
+  name?: string
+  email: string
+  image?: string
+}
 
-const Home: React.FC = () => {
+interface ISession {
+  accessToken: string
+  expires: string
+  user: IUser
+}
+
+interface SessionProps {
+  session: ISession
+}
+
+const Home: React.FC<SessionProps> = ({ session }) => {
   return (
-    <Container>
-      <Head>
-        <title>Homepage</title>
-      </Head>
-      <h1>Next.js Structure</h1>
-    </Container>
+    <p>
+      {!session && (
+        <>
+          Not signed in <br />
+          <button onClick={() => NextAuth.signin()}>Sign in</button>
+        </>
+      )}
+      {session && (
+        <>
+          Signed in as {session.user.email} <br />
+          <button onClick={() => NextAuth.signout()}>Sign out</button>
+        </>
+      )}
+    </p>
   )
+}
+
+export const getServerSideProps: GetServerSideProps<SessionProps> = async ({
+  req
+}) => {
+  const session = await NextAuth.session({ req })
+
+  return {
+    props: {
+      session
+    }
+  }
 }
 
 export default Home
