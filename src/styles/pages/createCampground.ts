@@ -13,12 +13,4 @@ export const Container = styled.div`
     font-size: 54px;
     color: ${props => props.theme.colors.primary};
   }
-
-  a {
-    color: #fff;
-    padding: 10px;
-    background: #069;
-    border-radius: 5px;
-    text-decoration: none;
-  }
 `
