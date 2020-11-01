@@ -1,4 +1,5 @@
 import NextAuth from 'next-auth'
+import Adapters from 'next-auth/adapters'
 import Providers from 'next-auth/providers'
 import { NextApiRequest, NextApiResponse } from 'next-auth/_utils'
 
@@ -10,7 +11,8 @@ const options = {
     })
   ],
 
-  database: process.env.NEXTAUTH_DATABASE_URL
+  database: process.env.NEXTAUTH_DATABASE_URL,
+  adapters: Adapters.Default
 }
 
 // eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types
