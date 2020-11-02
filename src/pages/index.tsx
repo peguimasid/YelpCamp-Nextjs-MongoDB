@@ -1,16 +1,46 @@
 import React from 'react'
-import { Container } from '~/styles/pages/Home'
-import Link from 'next/link'
+import { GetServerSideProps } from 'next'
+import axios from 'axios'
 
-const Home: React.FC = () => {
+import Header from '~/components/Header'
+
+import { Container } from '~/styles/pages/Home'
+
+interface ICampground {
+  title: string
+  description: string
+  price: string
+  imageUrl: string
+}
+
+interface HomeProps {
+  campgrounds: ICampground[]
+}
+
+export default function Home({ campgrounds }: HomeProps) {
   return (
-    <Container>
-      <h1>Initial Structure</h1>
-      <Link href="/createCampground">
-        <a>Criar acampamento</a>
-      </Link>
-    </Container>
+    <>
+      <Header />
+      <Container>
+        <ul>
+          {campgrounds.map(campground => {
+            return <li key={campground.title}>{campground.title}</li>
+          })}
+        </ul>
+      </Container>
+    </>
   )
 }
 
-export default Home
+export const getServerSideProps: GetServerSideProps<HomeProps> = async context => {
+  const baseUrl = context.req.headers.referer
+
+  const response = await axios.get(`${baseUrl}api/list-campgrounds`)
+  const { campgrounds } = response.data
+
+  return {
+    props: {
+      campgrounds
+    }
+  }
+}

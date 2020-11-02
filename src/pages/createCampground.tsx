@@ -17,6 +17,7 @@ const pages: React.FC = () => {
 
   async function handleAddCampground(event: FormEvent) {
     setLoading(true)
+
     event.preventDefault()
 
     try {
@@ -30,14 +31,14 @@ const pages: React.FC = () => {
       router.push('/')
       toast.success('Acampamento criado com sucesso')
     } catch (err) {
-      toast.error('Erro: ' + err.response.data)
+      toast.error(err.response.data)
     }
     setLoading(false)
   }
 
   return (
     <Container>
-      <h1>Create Campground</h1>
+      <h1>Criar acampamento</h1>
       <form onSubmit={handleAddCampground}>
         <input
           type="text"
@@ -54,7 +55,7 @@ const pages: React.FC = () => {
         <input
           type="number"
           value={price}
-          placeholder="Preço /dia"
+          placeholder="Preço por dia"
           onChange={e => setPrice(e.target.value)}
           min="0"
         />
