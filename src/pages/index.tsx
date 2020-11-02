@@ -33,9 +33,11 @@ export default function Home({ campgrounds }: HomeProps) {
 }
 
 export const getServerSideProps: GetServerSideProps<HomeProps> = async context => {
-  const baseUrl = context.req.headers.referer
+  const baseUrl = process.env.BASE_URL || 'http://localhost:3000'
 
-  const response = await axios.get(`${baseUrl}api/list-campgrounds`)
+  // console.log(context.req.headers.referer)
+
+  const response = await axios.get(`${baseUrl}/api/list-campgrounds`)
   const { campgrounds } = response.data
 
   return {
