@@ -1,6 +1,7 @@
 import React, { FormEvent, useState } from 'react'
 import axios from 'axios'
 import { useRouter } from 'next/router'
+import { toast } from 'react-toastify'
 
 import { Container, SubmitButton } from '~/styles/pages/createCampground'
 
@@ -27,8 +28,9 @@ const pages: React.FC = () => {
       })
 
       router.push('/')
+      toast.success('Acampamento criado com sucesso')
     } catch (err) {
-      alert('Erro: ' + err.response.data)
+      toast.error('Erro: ' + err.response.data)
     }
     setLoading(false)
   }
