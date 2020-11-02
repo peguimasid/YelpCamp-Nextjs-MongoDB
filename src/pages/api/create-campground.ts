@@ -1,11 +1,11 @@
 import { connectToDatabase } from '~/config/mongodb'
-import { NextApiRequest, NextApiResponse } from 'next'
+import { NowRequest, NowResponse } from '@vercel/node'
 
-export default async (req: NextApiRequest, res: NextApiResponse) => {
-  const { title, description, price, imageUrl } = req.query
+export default async (req: NowRequest, res: NowResponse) => {
+  const { title, description, price, imageUrl } = req.body
 
   if (!title || !description || !price || !imageUrl) {
-    return res.status(400).json('Missing data')
+    return res.status(400).json('Preencha todos os campos')
   }
 
   const { db, client } = await connectToDatabase()
@@ -19,5 +19,5 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
     })
   }
 
-  return res.status(200).json({ title, description, price, imageUrl })
+  return res.status(201).json({ title, description, price, imageUrl })
 }

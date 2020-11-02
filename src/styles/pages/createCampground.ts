@@ -35,13 +35,18 @@ export const Container = styled.div`
     border-radius: 5px;
     outline: none;
   }
+`
+interface IButton {
+  disabled: boolean
+}
 
-  button {
-    margin-top: 20px;
-    padding: 10px 20px;
-    background: #069;
-    border: none;
-    color: #fff;
-    border-radius: 5px;
-  }
+export const SubmitButton = styled.button<IButton>`
+  margin-top: 20px;
+  padding: 10px 20px;
+  background: #069;
+  opacity: ${props => (props.disabled ? '0.3' : '1')};
+  border: none;
+  color: #fff;
+  border-radius: 5px;
+  cursor: ${props => (props.disabled ? 'not-allowed' : 'pointer')};
 `

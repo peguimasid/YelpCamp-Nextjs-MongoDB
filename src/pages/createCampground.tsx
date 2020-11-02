@@ -1,6 +1,8 @@
 import React, { FormEvent, useState } from 'react'
+import axios from 'axios'
+import { useRouter } from 'next/router'
 
-import { Container } from '~/styles/pages/createCampground'
+import { Container, SubmitButton } from '~/styles/pages/createCampground'
 
 const pages: React.FC = () => {
   const [title, setTitle] = useState('')
@@ -8,20 +10,27 @@ const pages: React.FC = () => {
   const [price, setPrice] = useState('')
   const [imageUrl, setImageUrl] = useState('')
 
-  async function handleAddCampground(e: FormEvent) {
-    e.preventDefault()
+  const [loading, setLoading] = useState(false)
 
-    const response = await fetch(
-      `/api/create-campground?title=${title}&description=${description}&price=${price}&imageUrl=${imageUrl}`
-    )
+  const router = useRouter()
 
-    if (response.status === 400) {
-      console.log('deu errado')
+  async function handleAddCampground(event: FormEvent) {
+    setLoading(true)
+    event.preventDefault()
+
+    try {
+      await axios.post('/api/create-campground', {
+        title,
+        description,
+        price,
+        imageUrl
+      })
+
+      router.push('/')
+    } catch (err) {
+      alert('Erro: ' + err.response.data)
     }
-
-    if (response.status === 200) {
-      console.log('deu certo')
-    }
+    setLoading(false)
   }
 
   return (
@@ -53,7 +62,9 @@ const pages: React.FC = () => {
           placeholder="Link da imagem"
           onChange={e => setImageUrl(e.target.value)}
         />
-        <button type="submit">Cadastrar acampamento</button>
+        <SubmitButton type="submit" disabled={loading}>
+          Cadastrar acampamento
+        </SubmitButton>
       </form>
     </Container>
   )
