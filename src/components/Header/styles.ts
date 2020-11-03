@@ -9,8 +9,12 @@ export const Container = styled.div`
   align-items: center;
   justify-content: flex-end;
 
-  padding: 0 20px;
-  background: #202020;
+  padding: 0 40px;
+  background: #282a36;
+
+  @media (max-width: 600px) {
+    padding: 0 30px;
+  }
 
   a {
     color: #fff;

@@ -35,7 +35,7 @@ export default function Home({ campgrounds }: HomeProps) {
                 <img src={campground.imageUrl} />
                 <CampgroundTitle>{campground.title}</CampgroundTitle>
                 <p>{campground.description}</p>
-                <p>{formatPrice(Number(campground.price))} /dia</p>
+                <b>{formatPrice(Number(campground.price))} /dia</b>
               </li>
             )
           })}

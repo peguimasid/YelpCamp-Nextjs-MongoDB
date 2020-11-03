@@ -4,6 +4,10 @@ export const Container = styled.div`
   width: 100vw;
   height: 90vh;
   padding: 2rem;
+
+  @media (max-width: 600px) {
+    padding: 1rem;
+  }
 `
 
 export const CampgroundsList = styled.ul`
@@ -23,9 +27,18 @@ export const CampgroundsList = styled.ul`
   li {
     display: flex;
     flex-direction: column;
-    background: #303030;
+    background: #282a36;
     border-radius: 10px;
     padding: 20px;
+
+    p {
+      margin-top: 15px;
+      font-size: 20px;
+    }
+
+    b {
+      margin-top: 25px;
+    }
 
     img {
       max-width: 100%;
@@ -37,7 +50,6 @@ export const CampgroundsList = styled.ul`
 `
 
 export const CampgroundTitle = styled.h1`
-  color: #fff;
-  font-size: 20px;
+  font-size: 35px;
   margin-top: 20px;
 `
