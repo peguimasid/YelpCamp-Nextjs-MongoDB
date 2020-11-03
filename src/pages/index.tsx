@@ -2,11 +2,15 @@ import React from 'react'
 import { GetServerSideProps } from 'next'
 import axios from 'axios'
 
-import { useRouter } from 'next/router'
+import { formatPrice } from '~/util/format'
 
 import Header from '~/components/Header'
 
-import { Container } from '~/styles/pages/Home'
+import {
+  Container,
+  CampgroundsList,
+  CampgroundTitle
+} from '~/styles/pages/Home'
 
 interface ICampground {
   title: string
@@ -24,17 +28,24 @@ export default function Home({ campgrounds }: HomeProps) {
     <>
       <Header />
       <Container>
-        <ul>
+        <CampgroundsList>
           {campgrounds.map(campground => {
-            return <li key={campground.title}>{campground.title}</li>
+            return (
+              <li key={campground.title}>
+                <img src={campground.imageUrl} />
+                <CampgroundTitle>{campground.title}</CampgroundTitle>
+                <p>{campground.description}</p>
+                <p>{formatPrice(Number(campground.price))} /dia</p>
+              </li>
+            )
           })}
-        </ul>
+        </CampgroundsList>
       </Container>
     </>
   )
 }
 
-export const getServerSideProps: GetServerSideProps<HomeProps> = async context => {
+export const getServerSideProps: GetServerSideProps<HomeProps> = async () => {
   const baseUrl = process.env.BASE_URL || 'http://localhost:3000'
 
   const response = await axios.get(`${baseUrl}/api/list-campgrounds`)
