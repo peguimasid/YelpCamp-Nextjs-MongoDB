@@ -5,6 +5,7 @@ import axios from 'axios'
 import { formatPrice } from '~/util/format'
 
 import Header from '~/components/Header'
+import Footer from '~/components/Footer'
 
 import {
   Container,
@@ -40,6 +41,7 @@ export default function Home({ campgrounds }: HomeProps) {
             )
           })}
         </CampgroundsList>
+        <Footer />
       </Container>
     </>
   )
