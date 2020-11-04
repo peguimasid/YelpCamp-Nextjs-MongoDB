@@ -13,7 +13,7 @@ export const Container = styled.div`
   background: #282a36;
 
   @media (max-width: 600px) {
-    padding: 0 30px;
+    padding: 0 1rem;
   }
 
   a {
