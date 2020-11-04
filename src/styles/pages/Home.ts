@@ -2,7 +2,7 @@ import styled from 'styled-components'
 
 export const Container = styled.div`
   width: 100vw;
-  height: 90vh;
+  height: 100vh;
   padding: 2rem;
 
   @media (max-width: 600px) {
@@ -15,6 +15,7 @@ export const CampgroundsList = styled.ul`
   grid-template-columns: repeat(3, 1fr);
   grid-gap: 20px;
   list-style: none;
+  padding-bottom: 50px;
 
   @media (max-width: 960px) {
     grid-template-columns: repeat(2, 1fr);
