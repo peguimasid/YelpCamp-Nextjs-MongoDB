@@ -1,6 +1,7 @@
 import React from 'react'
 import { GetServerSideProps } from 'next'
 import axios from 'axios'
+import SEO from '~/components/SEO'
 
 import { formatPrice } from '~/util/format'
 
@@ -29,6 +30,7 @@ export default function Home({ campgrounds }: HomeProps) {
     <>
       <Header />
       <Container>
+        <SEO title="Home" />
         <CampgroundsList>
           {campgrounds.map(campground => {
             return (
