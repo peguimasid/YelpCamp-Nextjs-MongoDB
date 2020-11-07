@@ -26,11 +26,17 @@ interface HomeProps {
 }
 
 export default function Home({ campgrounds }: HomeProps) {
+  console.log(campgrounds)
+
   return (
     <>
       <Header />
       <Container>
-        <SEO title="Home" />
+        <SEO
+          title="Home"
+          description="Find thousands of campgrounds near you at very affordable prices"
+          image={campgrounds[campgrounds.length - 1].imageUrl}
+        />
         <CampgroundsList>
           {campgrounds.map(campground => {
             return (
