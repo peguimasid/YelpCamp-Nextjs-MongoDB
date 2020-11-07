@@ -17,9 +17,7 @@ export default function SEO({
   shouldIndexPage = true
 }: SEOProps) {
   const pageTitle = `${title} ${!shouldExcludeTitleSuffix ? '| YelpCamp' : ''}`
-  const pageImage = image
-    ? `${process.env.NEXT_PUBLIC_SITE_URL}/${image}`
-    : null
+  const pageImage = image || null
 
   return (
     <Head>
