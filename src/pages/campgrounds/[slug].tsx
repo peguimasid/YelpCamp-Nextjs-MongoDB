@@ -3,8 +3,9 @@ import { useRouter } from 'next/router'
 import { GetStaticPaths, GetStaticProps } from 'next'
 import axios from 'axios'
 import { formatPrice } from '~/util/format'
+import Link from 'next/link'
 
-// import { Container } from './styles';
+import { Container, InformationsContainer } from '~/styles/pages/campground'
 
 interface ICampground {
   _id: string
@@ -27,11 +28,17 @@ export default function Campgrounds({ campground }: CampgroundProps) {
   }
 
   return (
-    <div>
-      <h1>{campground.title}</h1>
-      <p>{campground.description}</p>
-      <b>{formatPrice(Number(campground.price))}</b>
-    </div>
+    <Container>
+      <InformationsContainer>
+        <img src={campground.imageUrl} alt={campground.title} />
+        <h1>{campground.title}</h1>
+        <p>{campground.description}</p>
+        <b>{formatPrice(Number(campground.price))} /dia</b>
+        <Link href="/home">
+          <a>Voltar para todos os acampamentos</a>
+        </Link>
+      </InformationsContainer>
+    </Container>
   )
 }
 
@@ -42,7 +49,7 @@ export const getStaticPaths: GetStaticPaths = async () => {
 
   const { campgrounds } = response.data
 
-  const paths = campgrounds.map(campground => {
+  const paths = campgrounds.map((campground: { slug: any }) => {
     return {
       params: { slug: campground.slug }
     }
@@ -50,7 +57,7 @@ export const getStaticPaths: GetStaticPaths = async () => {
 
   return {
     paths,
-    fallback: true
+    fallback: 'blocking'
   }
 }
 
