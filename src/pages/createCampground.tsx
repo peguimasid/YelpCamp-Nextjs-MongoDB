@@ -6,7 +6,7 @@ import removeDoubleSpaces from '~/util/removeDoubleSpaces'
 
 import { Container, SubmitButton } from '~/styles/pages/createCampground'
 
-const pages: React.FC = () => {
+const createCampground: React.FC = () => {
   const [title, setTitle] = useState('')
   const [description, setDescription] = useState('')
   const [price, setPrice] = useState('')
@@ -84,4 +84,4 @@ const pages: React.FC = () => {
   )
 }
 
-export default pages
+export default createCampground
