@@ -7,6 +7,10 @@ export const Container = styled.div`
   flex-direction: column;
   align-items: center;
   padding: 3rem;
+
+  @media (max-width: 600px) {
+    padding: 1rem;
+  }
 `
 
 export const InformationsContainer = styled.div`
@@ -16,9 +20,15 @@ export const InformationsContainer = styled.div`
   padding: 20px;
   border-radius: 5px;
 
+  @media (max-width: 600px) {
+    width: 100%;
+  }
+
   img {
     max-width: 500px;
     border-radius: 5px;
+    width: 100%;
+    height: auto;
   }
 
   h1 {
