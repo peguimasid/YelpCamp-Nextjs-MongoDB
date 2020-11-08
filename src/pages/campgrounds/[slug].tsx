@@ -75,6 +75,5 @@ export const getStaticProps: GetStaticProps<CampgroundProps> = async context => 
     props: {
       campground
     }
-    // revalidate: 1000
   }
 }
