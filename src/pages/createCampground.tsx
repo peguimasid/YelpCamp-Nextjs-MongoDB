@@ -2,11 +2,14 @@ import React, { FormEvent, useState } from 'react'
 import axios from 'axios'
 import { useRouter } from 'next/router'
 import { toast } from 'react-toastify'
+
 import removeDoubleSpaces from '~/util/removeDoubleSpaces'
 
 import { Container, SubmitButton } from '~/styles/pages/createCampground'
 
-const pages: React.FC = () => {
+import SEO from '~/components/SEO'
+
+const createCampground: React.FC = () => {
   const [title, setTitle] = useState('')
   const [description, setDescription] = useState('')
   const [price, setPrice] = useState('')
@@ -45,6 +48,7 @@ const pages: React.FC = () => {
 
   return (
     <Container>
+      <SEO title="Create Campground" />
       <h1>Criar acampamento</h1>
       <form onSubmit={handleSubmit}>
         <input
@@ -84,4 +88,4 @@ const pages: React.FC = () => {
   )
 }
 
-export default pages
+export default createCampground
