@@ -2,9 +2,12 @@ import React, { FormEvent, useState } from 'react'
 import axios from 'axios'
 import { useRouter } from 'next/router'
 import { toast } from 'react-toastify'
+
 import removeDoubleSpaces from '~/util/removeDoubleSpaces'
 
 import { Container, SubmitButton } from '~/styles/pages/createCampground'
+
+import SEO from '~/components/SEO'
 
 const createCampground: React.FC = () => {
   const [title, setTitle] = useState('')
@@ -45,6 +48,7 @@ const createCampground: React.FC = () => {
 
   return (
     <Container>
+      <SEO title="Create Campground" />
       <h1>Criar acampamento</h1>
       <form onSubmit={handleSubmit}>
         <input
