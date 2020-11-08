@@ -47,8 +47,8 @@ export default function Home({ campgrounds }: HomeProps) {
             )
           })}
         </CampgroundsList>
+        <Footer />
       </Container>
-      <Footer />
     </>
   )
 }

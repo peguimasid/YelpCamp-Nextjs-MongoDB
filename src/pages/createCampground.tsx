@@ -38,7 +38,7 @@ const createCampground: React.FC = () => {
         imageUrl
       })
 
-      router.push('/')
+      router.push('/home')
       toast.success('Acampamento criado com sucesso')
     } catch (err) {
       toast.error(err.response.data)
@@ -72,6 +72,7 @@ const createCampground: React.FC = () => {
           placeholder="Preço por dia"
           onChange={e => setPrice(e.target.value)}
           min="0"
+          max="1000"
         />
         <input
           name="imageUrl"
