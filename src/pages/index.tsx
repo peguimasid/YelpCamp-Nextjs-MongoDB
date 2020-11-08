@@ -26,8 +26,6 @@ interface HomeProps {
 }
 
 export default function Home({ campgrounds }: HomeProps) {
-  console.log(campgrounds)
-
   return (
     <>
       <Header />
