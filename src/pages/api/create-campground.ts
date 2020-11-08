@@ -1,12 +1,17 @@
 import { connectToDatabase } from '~/config/mongodb'
 import { NowRequest, NowResponse } from '@vercel/node'
 import removeDoubleSpaces from '~/util/removeDoubleSpaces'
+import isValidHttpUrl from '~/util/verifyUrl'
 
 export default async (req: NowRequest, res: NowResponse) => {
   let { slug, title, description, price, imageUrl } = req.body
 
   if (!title || !description || !price || !imageUrl) {
     return res.status(400).json('Preencha todos os campos')
+  }
+
+  if (!isValidHttpUrl(imageUrl)) {
+    return res.status(500).json('Insira uma URL válida')
   }
 
   title = removeDoubleSpaces(title)
