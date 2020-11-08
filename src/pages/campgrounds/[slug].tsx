@@ -36,29 +36,23 @@ export default function Campgrounds({ campground }: CampgroundProps) {
 }
 
 export const getStaticPaths: GetStaticPaths = async () => {
+  const baseUrl = process.env.BASE_URL || 'http://localhost:3000'
+
+  const response = await axios.get(`${baseUrl}/api/list-campgrounds`)
+
+  const { campgrounds } = response.data
+
+  const paths = campgrounds.map(campground => {
+    return {
+      params: { slug: campground.slug }
+    }
+  })
+
   return {
-    paths: [],
+    paths,
     fallback: true
   }
 }
-// export const getStaticPaths: GetStaticPaths = async () => {
-//   const baseUrl = process.env.BASE_URL || 'http://localhost:3000'
-
-//   const response = await axios.get(`${baseUrl}/api/list-campgrounds`)
-
-//   const { campgrounds } = response.data
-
-//   const paths = campgrounds.map(campground => {
-//     return {
-//       params: { slug: campground.slug }
-//     }
-//   })
-
-//   return {
-//     paths,
-//     fallback: true
-//   }
-// }
 
 export const getStaticProps: GetStaticProps<CampgroundProps> = async context => {
   const { slug } = context.params
