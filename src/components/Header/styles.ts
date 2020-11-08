@@ -7,13 +7,18 @@ export const Container = styled.div`
   display: flex;
   flex-direction: row;
   align-items: center;
-  justify-content: flex-end;
+  justify-content: space-between;
 
   padding: 0 40px;
   background: #282a36;
 
   @media (max-width: 600px) {
     padding: 0 1rem;
+  }
+
+  h1 {
+    color: #eee;
+    cursor: pointer;
   }
 
   a {

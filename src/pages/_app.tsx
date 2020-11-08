@@ -2,6 +2,7 @@ import React from 'react'
 import { AppProps } from 'next/app'
 import { ToastContainer } from 'react-toastify'
 import { ThemeProvider } from 'styled-components'
+
 import Router from 'next/router'
 import NProgress from 'nprogress'
 import 'nprogress/nprogress.css'

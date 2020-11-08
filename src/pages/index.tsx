@@ -2,19 +2,21 @@ import React from 'react'
 import Link from 'next/link'
 import SEO from '~/components/SEO'
 
-// import { Container } from './styles';
+import { Container } from '~/styles/pages/Initial'
 
-const Main: React.FC = () => {
+const Initial: React.FC = () => {
   return (
-    <>
+    <Container>
       <h1>YelpCamp</h1>
-      <Link href="/home">Ver todos os acampamentos</Link>
+      <Link href="/home">
+        <a>Ver todos os acampamentos</a>
+      </Link>
       <SEO
-        title="Página inicial"
+        title="Initial Page"
         description="Find thousands of campgrounds near you at very affordable prices"
       />
-    </>
+    </Container>
   )
 }
 
-export default Main
+export default Initial

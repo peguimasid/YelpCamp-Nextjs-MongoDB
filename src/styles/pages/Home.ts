@@ -40,6 +40,7 @@ export const CampgroundsList = styled.ul`
 
     b {
       margin-top: 25px;
+      margin-bottom: 25px;
     }
 
     img {
@@ -47,6 +48,18 @@ export const CampgroundsList = styled.ul`
       height: auto;
       align-self: center;
       border-radius: 5px;
+    }
+
+    a {
+      background: #069;
+      text-decoration: none;
+      color: #fff;
+      padding: 15px 40px;
+      border-radius: 5px;
+      margin-top: auto;
+      align-self: stretch;
+      text-align: center;
+      bottom: 0;
     }
   }
 `

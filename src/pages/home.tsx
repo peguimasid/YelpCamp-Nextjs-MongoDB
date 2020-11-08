@@ -1,6 +1,7 @@
 import React from 'react'
 import { GetServerSideProps } from 'next'
 import axios from 'axios'
+import Link from 'next/link'
 import SEO from '~/components/SEO'
 
 import { formatPrice } from '~/util/format'
@@ -15,6 +16,7 @@ import {
 } from '~/styles/pages/Home'
 
 interface ICampground {
+  slug: string
   title: string
   description: string
   price: string
@@ -43,6 +45,9 @@ export default function Home({ campgrounds }: HomeProps) {
                 <CampgroundTitle>{campground.title}</CampgroundTitle>
                 <p>{campground.description}</p>
                 <b>{formatPrice(Number(campground.price))} /dia</b>
+                <Link href={`campgrounds/${campground.slug}`}>
+                  <a>Main Info</a>
+                </Link>
               </li>
             )
           })}
