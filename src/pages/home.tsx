@@ -46,7 +46,7 @@ export default function Home({ campgrounds }: HomeProps) {
                 <p>{campground.description}</p>
                 <b>{formatPrice(Number(campground.price))} /dia</b>
                 <Link href={`campgrounds/${campground.slug}`}>
-                  <a>Main Info</a>
+                  <a>Mais informações</a>
                 </Link>
               </li>
             )
