@@ -1226,12 +1226,20 @@
     "@types/bson" "*"
     "@types/node" "*"
 
+"@types/next-nprogress@^1.4.0":
+  version "1.4.0"
+  resolved "https://registry.yarnpkg.com/@types/next-nprogress/-/next-nprogress-1.4.0.tgz#ba1cef05af50bb7b77d28918434e7a4e5b2d79c4"
+  integrity sha512-NVNHuAc1yhJTggRrpjf9Ley47MqU9hj0JCyy+C5+vviKDxH1f/oAz/ph2lilelvHBuY484wooxt3hAh+7DmIzg==
+  dependencies:
+    "@types/nprogress" "*"
+    "@types/react" "*"
+
 "@types/node@*", "@types/node@^14.14.6":
   version "14.14.6"
   resolved "https://registry.yarnpkg.com/@types/node/-/node-14.14.6.tgz"
   integrity sha512-6QlRuqsQ/Ox/aJEQWBEJG7A9+u7oSYl3mem/K8IzxXG/kAGbV1YPD9Bg9Zw3vyxC/YP+zONKwy8hGkSt1jxFMw==
 
-"@types/nprogress@^0.2.0":
+"@types/nprogress@*", "@types/nprogress@^0.2.0":
   version "0.2.0"
   resolved "https://registry.yarnpkg.com/@types/nprogress/-/nprogress-0.2.0.tgz#86c593682d4199212a0509cc3c4d562bbbd6e45f"
   integrity sha512-1cYJrqq9GezNFPsWTZpFut/d4CjpZqA0vhqDUPFWYKF1oIyBz5qnoYMzR+0C/T96t3ebLAC1SSnwrVOm5/j74A==
