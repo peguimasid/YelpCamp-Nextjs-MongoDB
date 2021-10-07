@@ -9,10 +9,16 @@
 
 ### 🏠 [Click here to see project in production](https://yelpcamp-nextjs-mongodb.vercel.app/)
 
-## Install
+## Downaload
 
 ```sh
 git clone https://github.com/peguimasid/YelpCamp-Nextjs-MongoDB.git
+```
+
+## Install dependencies
+
+```sh
+yarn
 ```
 
 ## Usage
